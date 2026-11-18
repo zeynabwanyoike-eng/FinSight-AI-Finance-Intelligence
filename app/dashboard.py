@@ -4,6 +4,12 @@ import pandas as pd
 import tempfile
 from pathlib import Path
 from html import escape
+import sys
+
+# Ensure the repository root is importable on Streamlit Cloud and locally.
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 from app.process_invoice import process_invoice_pdf
 from app.financial_dashboard import get_dashboard_metrics
